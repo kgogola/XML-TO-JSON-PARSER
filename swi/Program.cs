@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace swi
 {
@@ -6,7 +7,14 @@ namespace swi
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string path = Directory.GetCurrentDirectory();
+            string fileName = "input.xml";
+            string XMLpath = path + "\\" + fileName;
+
+            ConverterManager converterManager = new ConverterManager();
+            converterManager.LoadFile(XMLpath);
+            converterManager.ConvertXmlToObject();
+            converterManager.ConvertObjectToJson(path);
         }
     }
 }
